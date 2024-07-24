@@ -1,13 +1,14 @@
 from flask import Flask
 from pymongo import MongoClient
+from dotenv import load_dotenv
 import os
-import dotenv
-
-dotenv.load_dotenv()
 
 def create_app():
+    # Load environment variables from a .env file
+    load_dotenv()
+
     app = Flask(__name__)
-    app.config.from_mapping(SECRET_KEY='your_secret_key')
+    app.config.from_mapping(SECRET_KEY=os.getenv('SECRET_KEY', 'default_secret_key'))
 
     # MongoDB connection setup
     mongo_uri = os.getenv('MONGO_URI')
