@@ -13,7 +13,7 @@ def create_app():
     # MongoDB connection setup
     mongo_uri = os.getenv('MONGO_URI')
     client = MongoClient(mongo_uri)
-    app.db = client['email_rating_app']
+    app.db = client['ai-rewriter']
 
     with app.app_context():
         from . import routes
