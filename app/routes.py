@@ -24,8 +24,10 @@ def rate_email():
         return redirect(url_for('index'))
     
     if request.method == 'POST':
-        email_id = request.form['email_id']
+        email_id = int(request.form['email_id'])
         responses = {
+            'ra_name': ra_name,
+            'email_id': email_id,
             'q1': request.form['q1'],
             'q2': request.form['q2'],
             'q3': request.form['q3'],
@@ -33,8 +35,11 @@ def rate_email():
             'q5': request.form['q5'],
             'q6': request.form['q6'],
         }
-        # Save responses logic here
-        rated_emails[ra_name].append(int(email_id))
+
+        # Save responses to MongoDB
+        app.db.responses.insert_one(responses)
+
+        rated_emails[ra_name].append(email_id)
     
     available_emails = [email for email in emails if email['id'] not in rated_emails[ra_name]]
     if not available_emails:
