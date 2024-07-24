@@ -1,5 +1,6 @@
 from flask import Flask
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 import os
 
@@ -12,8 +13,9 @@ def create_app():
 
     # MongoDB connection setup
     mongo_uri = os.getenv('MONGO_URI')
-    client = MongoClient(mongo_uri)
-    app.db = client['ai-rewriter']
+    print(f"Connecting to MongoDB with URI: {mongo_uri}")
+    client = MongoClient(mongo_uri, server_api=ServerApi('1'))
+    app.db = client['email-rewriter']
 
     with app.app_context():
         from . import routes
