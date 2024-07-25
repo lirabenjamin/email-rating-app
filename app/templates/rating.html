@@ -8,87 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <p>{{ email.content }}</p>
+        <h1>Rate Email</h1>
+        <div class="email-content">
+            {{ email.content|safe }}
+        </div>
         <form action="/rate" method="POST">
             <input type="hidden" name="email_id" value="{{ email.id }}">
 
+            {% for i in range(questions|length) %}
             <div class="question">
-                <label for="q1">Question 1</label>
-                <div>
-                    <input type="radio" id="q1_1" name="q1" value="1" required>
-                    <label for="q1_1">1</label>
+                <label for="q{{ i+1 }}">{{ questions[i] }}</label>
+                <div class="radio-group">
+                    <input type="radio" id="q{{ i+1 }}_1" name="q{{ i+1 }}" value="1" required>
+                    <label for="q{{ i+1 }}_1">1</label>
+                    <input type="radio" id="q{{ i+1 }}_2" name="q{{ i+1 }}" value="2">
+                    <label for="q{{ i+1 }}_2">2</label>
+                    <!-- Add more options as needed -->
                 </div>
-                <div>
-                    <input type="radio" id="q1_2" name="q1" value="2">
-                    <label for="q1_2">2</label>
-                </div>
-                <!-- Add more options as needed -->
             </div>
-
-            <div class="question">
-                <label for="q2">Question 2</label>
-                <div>
-                    <input type="radio" id="q2_1" name="q2" value="1" required>
-                    <label for="q2_1">1</label>
-                </div>
-                <div>
-                    <input type="radio" id="q2_2" name="q2" value="2">
-                    <label for="q2_2">2</label>
-                </div>
-                <!-- Add more options as needed -->
-            </div>
-
-            <div class="question">
-                <label for="q3">Question 3</label>
-                <div>
-                    <input type="radio" id="q3_1" name="q3" value="1" required>
-                    <label for="q3_1">1</label>
-                </div>
-                <div>
-                    <input type="radio" id="q3_2" name="q3" value="2">
-                    <label for="q3_2">2</label>
-                </div>
-                <!-- Add more options as needed -->
-            </div>
-
-            <div class="question">
-                <label for="q4">Question 4</label>
-                <div>
-                    <input type="radio" id="q4_1" name="q4" value="1" required>
-                    <label for="q4_1">1</label>
-                </div>
-                <div>
-                    <input type="radio" id="q4_2" name="q4" value="2">
-                    <label for="q4_2">2</label>
-                </div>
-                <!-- Add more options as needed -->
-            </div>
-
-            <div class="question">
-                <label for="q5">Question 5</label>
-                <div>
-                    <input type="radio" id="q5_1" name="q5" value="1" required>
-                    <label for="q5_1">1</label>
-                </div>
-                <div>
-                    <input type="radio" id="q5_2" name="q5" value="2">
-                    <label for="q5_2">2</label>
-                </div>
-                <!-- Add more options as needed -->
-            </div>
-
-            <div class="question">
-                <label for="q6">Question 6</label>
-                <div>
-                    <input type="radio" id="q6_1" name="q6" value="1" required>
-                    <label for="q6_1">1</label>
-                </div>
-                <div>
-                    <input type="radio" id="q6_2" name="q6" value="2">
-                    <label for="q6_2">2</label>
-                </div>
-                <!-- Add more options as needed -->
-            </div>
+            {% endfor %}
 
             <button type="submit">Submit</button>
         </form>

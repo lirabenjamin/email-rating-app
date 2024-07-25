@@ -4,12 +4,19 @@ import random
 import logging
 from bson import ObjectId
 
+# Load RA names and questions from files
+with open('instance/users.json', 'r') as f:
+    ra_names = json.load(f)
+
+with open('instance/questions.json', 'r') as f:
+    questions = json.load(f)
+
 # Load emails
-with open('instance/emails.json', 'r') as f:
+with open('instance/emails2.json', 'r') as f:
     emails = json.load(f)
 
 # Track rated emails
-rated_emails = {ra: [] for ra in ['RA1', 'RA2', 'RA3', 'RA4', 'RA5', 'RA6', 'RA7', 'RA8', 'RA9', 'RA10']}
+rated_emails = {ra: [] for ra in ra_names}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -17,7 +24,7 @@ def index():
         ra_name = request.form['ra_name']
         session['ra_name'] = ra_name
         return redirect(url_for('rate_email'))
-    return render_template('index.html')
+    return render_template('index.html', ra_names=ra_names)
 
 @app.route('/rate', methods=['GET', 'POST'])
 def rate_email():
@@ -52,7 +59,7 @@ def rate_email():
         available_emails = emails
 
     email_to_rate = random.choice(available_emails)
-    return render_template('rating.html', email=email_to_rate)
+    return render_template('rating.html', email=email_to_rate, questions=questions)
 
 @app.route('/responses', methods=['GET'])
 def get_responses():
