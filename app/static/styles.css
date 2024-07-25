@@ -4,8 +4,8 @@ body {
   padding: 0;
   font-family: 'Arial', sans-serif;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   background-color: #f4f4f4;
 }
@@ -77,6 +77,7 @@ button:hover {
 .radio-group {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping if needed */
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -121,11 +122,10 @@ button:hover {
       padding: 20px;
   }
 
-  .radio-group {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
+.radio-group {
+  flex-wrap: nowrap; /* Prevent wrapping */
+  justify-content: center; /* Center the buttons */
+}
   .radio-group label {
       margin-bottom: 10px;
   }
