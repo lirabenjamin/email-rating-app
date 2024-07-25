@@ -29,7 +29,7 @@ h1 {
 }
 
 label {
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #333;
   display: block;
   margin-bottom: 5px;

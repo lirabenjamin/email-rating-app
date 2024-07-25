@@ -19,11 +19,10 @@
             <div class="question">
                 <label for="q{{ i+1 }}">{{ questions[i] }}</label>
                 <div class="radio-group">
-                    <input type="radio" id="q{{ i+1 }}_1" name="q{{ i+1 }}" value="1" required>
-                    <label for="q{{ i+1 }}_1">1</label>
-                    <input type="radio" id="q{{ i+1 }}_2" name="q{{ i+1 }}" value="2">
-                    <label for="q{{ i+1 }}_2">2</label>
-                    <!-- Add more options as needed -->
+                    {% for j in range(11) %}
+                    <input type="radio" id="q{{ i+1 }}_{{ j }}" name="q{{ i+1 }}" value="{{ j }}" required>
+                    <label for="q{{ i+1 }}_{{ j }}">{{ j }}</label>
+                    {% endfor %}
                 </div>
             </div>
             {% endfor %}
