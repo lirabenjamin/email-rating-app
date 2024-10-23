@@ -41,7 +41,6 @@ def rate_email():
                 'q3': request.form['q3'],
                 'q4': request.form['q4'],
                 'q5': request.form['q5'],
-                'q6': request.form['q6'],
                 'timestamp': datetime.utcnow()  # Save the current UTC timestamp
 
             }
