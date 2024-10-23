@@ -15,7 +15,7 @@ def create_app():
     mongo_uri = os.getenv('MONGO_URI')
     print(f"Connecting to MongoDB with URI: {mongo_uri}")
     client = MongoClient(mongo_uri, server_api=ServerApi('1'))
-    app.db = client['email-rewriter']
+    app.db = client['ratings']
     
     # Customize Jinja2 environment to include enumerate
     app.jinja_env.globals.update(enumerate=enumerate)
