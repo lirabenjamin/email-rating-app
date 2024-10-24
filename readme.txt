@@ -12,4 +12,3 @@ Use the pandas_to_json.py file to save the emails2.json file, which is going to 
 
 I think that repsonses.rxt and read_data.py are not needed.
 
-redeploy the app to heroku
