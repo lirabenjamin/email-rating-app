@@ -2,9 +2,10 @@ import pandas as pd
 import json
 
 # Load the data
-data = pd.read_parquet('instance/texts_to_rate.parquet')
+data = pd.read_parquet('instance/batch1.parquet')
 
-data = data[['text_id', 'text']]
+data = data[['id', 'test_rewritten']]
+data.rename(columns={'test_rewritten': 'text', 'id':"text_id"}, inplace=True)
 data.rename(columns={'text': 'content', "text_id": "id"}, inplace=True)
 
 # Convert DataFrame to JSON
