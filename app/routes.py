@@ -32,7 +32,7 @@ def rate_email():
     
     if request.method == 'POST':
         try:
-            email_id = int(request.form['email_id'])
+            email_id = str(request.form['email_id'])
             responses = {
                 'ra_name': ra_name,
                 'email_id': email_id,
