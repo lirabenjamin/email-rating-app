@@ -2,7 +2,8 @@ import pandas as pd
 import json
 
 # Load the data
-data = pd.read_parquet('instance/batch1.parquet')
+# data = pd.read_parquet('instance/batch1.parquet')
+data = pd.read_parquet('instance/batch2.parquet')
 
 data = data[['id', 'test_rewritten']]
 data.rename(columns={'test_rewritten': 'text', 'id':"text_id"}, inplace=True)
