@@ -12,6 +12,11 @@
         <div class="email-content">
             {{ email.content|safe }}
         </div>
+        <!-- Display the email ID -->
+        <div class="email-id">
+            <strong>Email ID:</strong> {{ email.id }}
+        </div>
+
         <form action="/rate" method="POST">
             <input type="hidden" name="email_id" value="{{ email.id }}">
 
